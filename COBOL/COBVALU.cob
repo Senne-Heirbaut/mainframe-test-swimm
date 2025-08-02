@@ -32,17 +32,17 @@
        PROCEDURE DIVISION USING PARM-1.
            MOVE "NO" TO CALL-FEEDBACK.
            MOVE ".12 5 " TO INPUT-1.
-           UNSTRING INPUT-1 DELIMITED BY "," OR ALL " "                VALU1 
+           UNSTRING INPUT-1 DELIMITED BY "," OR ALL " "                 
             INTO INTEREST-IN NO-OF-PERIODS-IN.
       * Convert to numeric values
-           COMPUTE INTEREST = FUNCTION NUMVAL(INTEREST-IN).            VALU2 
+           COMPUTE INTEREST = FUNCTION NUMVAL(INTEREST-IN).            
            COMPUTE NO-OF-PERIODS = FUNCTION NUMVAL(NO-OF-PERIODS-IN).
       * Get cash flows
            PERFORM GET-AMOUNTS VARYING COUNTER FROM 1 BY 1 UNTIL
              COUNTER IS GREATER THAN NO-OF-PERIODS.
       * Calculate present value
            COMPUTE PAYMENT =
-               FUNCTION PRESENT-VALUE(INTEREST VALUE-AMOUNT(ALL) ).    VALU3 
+               FUNCTION PRESENT-VALUE(INTEREST VALUE-AMOUNT(ALL) ).    
       * Make it presentable
            MOVE PAYMENT TO PAYMENT-OUT.
            STRING "COBVALU:_Present_value_for_rate_of_"

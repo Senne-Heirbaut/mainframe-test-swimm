@@ -3,7 +3,7 @@ title: Explanation of COBCALC
 ---
 # Introduction
 
-This document explains the design and implementation of the COBOL program located at <SwmPath>[COBOL/COBCALC.cobol](/COBOL/COBCALC.cobol)</SwmPath>. The program performs financial calculations by calling external subprograms. We will cover:
+This document explains the design and implementation of the COBOL program located at <SwmPath>[COBOL/COBCALC.cob](/COBOL/COBCALC.cob)</SwmPath>. The program performs financial calculations by calling external subprograms. We will cover:
 
 1. How input commands are handled and processed.
 2. The mechanism for invoking financial calculation subprograms.
@@ -12,7 +12,7 @@ This document explains the design and implementation of the COBOL program locate
 
 # program structure and input setup
 
-<SwmSnippet path="/COBOL/COBCALC.cobol" line="1">
+<SwmSnippet path="/COBOL/COBCALC.cob" line="1">
 
 ---
 
@@ -51,7 +51,7 @@ The program defines a small set of input commands ("LOAN", "PVALUE", "END") stor
 
 </SwmSnippet>
 
-<SwmSnippet path="/COBOL/COBCALC.cobol" line="28">
+<SwmSnippet path="/COBOL/COBCALC.cob" line="28">
 
 ---
 
@@ -70,11 +70,11 @@ At the start of the procedure division, the program initializes the pointer and 
 
 # input processing loop
 
-<SwmSnippet path="/COBOL/COBCALC.cobol" line="32">
+<SwmSnippet path="/COBOL/COBCALC.cob" line="32">
 
 ---
 
-The main loop repeatedly calls <SwmToken path="/COBOL/COBCALC.cobol" pos="33:3:5" line-data="           PERFORM ACCEPT-INPUT UNTIL INPUT-1 EQUAL TO &quot;END&quot;.">`ACCEPT-INPUT`</SwmToken> until the "END" command is encountered. This loop drives the program's operation by processing each input command in order.
+The main loop repeatedly calls <SwmToken path="/COBOL/COBCALC.cob" pos="33:3:5" line-data="           PERFORM ACCEPT-INPUT UNTIL INPUT-1 EQUAL TO &quot;END&quot;.">`ACCEPT-INPUT`</SwmToken> until the "END" command is encountered. This loop drives the program's operation by processing each input command in order.
 
 ```
       * Keep processing data until END requested
@@ -91,9 +91,9 @@ The main loop repeatedly calls <SwmToken path="/COBOL/COBCALC.cobol" pos="33:3:5
 
 # input command evaluation and subprogram calls
 
-The <SwmToken path="/COBOL/COBCALC.cobol" pos="33:3:5" line-data="           PERFORM ACCEPT-INPUT UNTIL INPUT-1 EQUAL TO &quot;END&quot;.">`ACCEPT-INPUT`</SwmToken> routine reads the current command from the buffer and increments the pointer. It converts the input to uppercase to allow case-insensitive matching. Based on the command, it either calls the appropriate financial calculation subprogram or displays an error for invalid input.
+The <SwmToken path="/COBOL/COBCALC.cob" pos="33:3:5" line-data="           PERFORM ACCEPT-INPUT UNTIL INPUT-1 EQUAL TO &quot;END&quot;.">`ACCEPT-INPUT`</SwmToken> routine reads the current command from the buffer and increments the pointer. It converts the input to uppercase to allow case-insensitive matching. Based on the command, it either calls the appropriate financial calculation subprogram or displays an error for invalid input.
 
-<SwmSnippet path="/COBOL/COBCALC.cobol" line="39">
+<SwmSnippet path="/COBOL/COBCALC.cob" line="39">
 
 ---
 
